@@ -1,47 +1,9 @@
+# DL ¡ª PyTorch MNIST Pipeline
 
-# DL â€” PyTorch MNIST Pipeline
-
-> æœ€å°å¯å¤ç°å®è®­ï¼šæ•°æ®â†’æ¨¡å‹â†’è®­ç»ƒâ†’è¯„ä¼°â†’å¯è§†åŒ–ï¼Œä¸€é”®å¯è·‘ã€‚
-
-## Quickstart
-
-```bash
-git clone https://github.com/boboboleah/dl-pytorch-mnist.git
-cd dl-pytorch-mnist
-
-python -m venv .venv && source .venv/bin/activate  # Windows ç”¨ .venv\Scripts\activate
-pip install -r requirements.txt
-
-# è®­ç»ƒ + è¯„ä¼° + ç”»å›¾
-python src/train.py --epochs 3 --lr 1e-3 --dropout 0.2 --out logs/run1
-python src/eval.py --ckpt logs/run1/best.pth --out logs/run1
-python src/plot_curves.py --log logs/run1/metrics.csv --out logs/run1
-```
-
-## Repo Map
-```
-.
-â”œâ”€â”€ src/
-â”‚   â”œâ”€â”€ models.py          # MLP/CNN
-â”‚   â”œâ”€â”€ data.py            # MNIST dataloader
-â”‚   â”œâ”€â”€ train.py           # è®­ç»ƒä¸»ç¨‹åºï¼ˆä¿å­˜ best.pth ä¸ metrics.csvï¼‰
-â”‚   â”œâ”€â”€ eval.py            # æµ‹è¯•é›†è¯„ä¼°ï¼ˆaccuracyï¼‰
-â”‚   â””â”€â”€ plot_curves.py     # è®­ç»ƒ/éªŒè¯æ›²çº¿ç»˜åˆ¶
-â”œâ”€â”€ requirements.txt
-â”œâ”€â”€ docs/
-â”‚   â””â”€â”€ EXP_NOTES.md       # å®éªŒè®°å½•/å¯¹æ¯”è¡¨æ¨¡æ¿
-â””â”€â”€ .github/workflows/ci.yml
-```
-
-## Reproducibility
-- å›ºå®šéšæœºç§å­ã€è®°å½•è¶…å‚ä¸æŒ‡æ ‡åˆ° `metrics.csv`
-- å°æ‰¹é‡å¯åœ¨ CPU ä¸Šå¿«é€Ÿå¤ç°ï¼Œå®Œæ•´è®­ç»ƒå¯åˆ‡æ¢ GPUï¼ˆCUDAï¼‰
-
-## License
-MIT
+×îĞ¡¿É¸´ÏÖÊµÑµ£ºÊı¾İ¡úÄ£ĞÍ¡úÑµÁ·¡úÆÀ¹À¡ú¿ÉÊÓ»¯£¬Ò»¼ü¿ÉÅÜ¡£
 
 ## Quickstart (CPU)
-```bash
+`ash
 python -m venv .venv && .\.venv\Scripts\activate   # macOS/Linux: source .venv/bin/activate
 pip install -r requirements.txt
 
@@ -50,14 +12,42 @@ python src/train.py --epochs 3 --lr 1e-3 --dropout 0.2 --arch mlp --out logs/run
 python src/eval.py  --ckpt logs/run1/best.pth --arch mlp --out logs/run1
 python src/plot_curves.py --log logs/run1/metrics.csv --out logs/run1
 
-# CNNï¼ˆå¯é€‰å¯¹æ¯”ï¼‰
+# CNN£¨¶Ô±È£©
 python src/train.py --epochs 3 --arch cnn --out logs/run2
 python src/eval.py  --ckpt logs/run2/best.pth --arch cnn --out logs/run2
 python src/plot_curves.py --log logs/run2/metrics.csv --out logs/run2
+Repo Map
+bash
+¸´ÖÆ´úÂë
+.
+©À©¤©¤ src/
+©¦   ©À©¤©¤ models.py          # MLP/CNN
+©¦   ©À©¤©¤ data.py            # MNIST dataloader
+©¦   ©À©¤©¤ train.py           # ÑµÁ·Ö÷³ÌĞò£¨±£´æ best.pth Óë metrics.csv£©
+©¦   ©À©¤©¤ eval.py            # ²âÊÔ¼¯ÆÀ¹À£¨accuracy£©
+©¦   ©¸©¤©¤ plot_curves.py     # ÑµÁ·/ÑéÖ¤ÇúÏß»æÖÆ
+©À©¤©¤ requirements.txt
+©À©¤©¤ docs/
+©¦   ©¸©¤©¤ EXP_NOTES.md       # ÊµÑé¼ÇÂ¼/¶Ô±È±íÄ£°å
+©¸©¤©¤ .github/workflows/ci.yml
+Reproducibility
+¹Ì¶¨Ëæ»úÖÖ×Ó£¬¼ÇÂ¼³¬²ÎÓëÖ¸±êµ½ metrics.csv
 
-## Reproduce
-```bash
+Ğ¡ÅúÁ¿¿ÉÔÚ CPU ÉÏ¿ìËÙ¸´ÏÖ£¬ÍêÕûÑµÁ·¿ÉÇĞ»» GPU£¨CUDA£©
+
+License
+MIT
+
+Results
+MLP£º
+
+
+CNN ¶Ô±È£º
+
+
+Reproduce£¨Ö»ÅÜ MLP µÄ×îĞ¡ÃüÁî£©
+bash
+¸´ÖÆ´úÂë
 python src/train.py --epochs 3 --lr 1e-3 --dropout 0.2 --arch mlp --out logs/run1
 python src/eval.py  --ckpt logs/run1/best.pth --arch mlp --out logs/run1
 python src/plot_curves.py --log logs/run1/metrics.csv --out logs/run1
-
