@@ -49,4 +49,3 @@ MIT
 python src/train.py --epochs 3 --lr 1e-3 --dropout 0.2 --arch mlp --out logs/run1
 python src/eval.py  --ckpt logs/run1/best.pth --arch mlp --out logs/run1
 python src/plot_curves.py --log logs/run1/metrics.csv --out logs/run1
-```
