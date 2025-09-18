@@ -40,12 +40,24 @@ python src/plot_curves.py --log logs/run1/metrics.csv --out logs/run1
 ## License
 MIT
 
-## Results
-![acc](docs/acc.png)
-![loss](docs/loss.png)
+## Quickstart (CPU)
+```bash
+python -m venv .venv && .\.venv\Scripts\activate   # macOS/Linux: source .venv/bin/activate
+pip install -r requirements.txt
+
+# MLP
+python src/train.py --epochs 3 --lr 1e-3 --dropout 0.2 --arch mlp --out logs/run1
+python src/eval.py  --ckpt logs/run1/best.pth --arch mlp --out logs/run1
+python src/plot_curves.py --log logs/run1/metrics.csv --out logs/run1
+
+# CNN（可选对比）
+python src/train.py --epochs 3 --arch cnn --out logs/run2
+python src/eval.py  --ckpt logs/run2/best.pth --arch cnn --out logs/run2
+python src/plot_curves.py --log logs/run2/metrics.csv --out logs/run2
 
 ## Reproduce
 ```bash
 python src/train.py --epochs 3 --lr 1e-3 --dropout 0.2 --arch mlp --out logs/run1
 python src/eval.py  --ckpt logs/run1/best.pth --arch mlp --out logs/run1
 python src/plot_curves.py --log logs/run1/metrics.csv --out logs/run1
+
